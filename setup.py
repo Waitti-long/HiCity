@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
     name="HiCity",
-    version="1.0.0",
+    version="0.6",
     description="HiCity",
     packages=find_packages()
 )
