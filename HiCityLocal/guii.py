@@ -91,9 +91,12 @@ class GUI:
             def clear(self):
                 self.label.config(text="")
 
+            def flush(self):
+                GUI.tk_root.update()
+
         progress_label = tk.Label(GUI.tk_root, text="", bg="white")
         progress_label.grid(row=2, column=0, pady=20, padx=20)
         GUI.printer = MyPrinter(progress_label)
-        GUI.progressbar = Progressbar(GUI.printer,GUI.tk_root)
+        GUI.progressbar = Progressbar(GUI.printer)
         GUI.city_finder = CityFinder()
         GUI.sql = SQL(db_name)

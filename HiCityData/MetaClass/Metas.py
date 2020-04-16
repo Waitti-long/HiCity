@@ -14,3 +14,9 @@ class MetaPrinter:
         清空输出流
         """
         pass
+
+    def flush(self):
+        """
+        更新流
+        """
+        pass
