@@ -4,7 +4,7 @@ from .entity import City
 class Parser:
     """
     将数据拼装成字典
-    @param progressbar 简易进度条
+    @param progressbar: 简易进度条
     """
 
     def __init__(self, progressbar):
@@ -32,7 +32,7 @@ class Parser:
 class Reader:
     """
     从文件和数据库中读取数据
-    @param progressbar 简易进度条
+    @param progressbar: 简易进度条
     """
 
     def __init__(self, progressbar):
@@ -41,7 +41,7 @@ class Reader:
     def read_from_file(self, file: str) -> [str]:
         """
             从文件中读取数据
-            @param 文件名
+            @param file: 文件名
             @return 文件的所有行构成的列表
             """
         self.bar.set_target(1)
@@ -55,7 +55,7 @@ class Reader:
     def read_from_db(self, sql) -> [str]:
         """
         从数据库中读取数据
-        @param sql 封装过的数据库对象 <class SQL>
+        @param sql: 封装过的数据库对象 <class SQL>
         @return 数据库的所有行构成的列表
         """
         res = []
@@ -76,8 +76,8 @@ class Reader:
 class Writer:
     """
     将数据存储到数据库
-     @param progressbar 简易进度条
-     @param logger 实现MetaPrinter的接口 写入过程出现的一些小错误会输出到这里
+     @param progressbar: 简易进度条
+     @param logger: 实现MetaPrinter的接口 写入过程出现的一些小错误会输出到这里
     """
 
     def __init__(self, progressbar, logger):

@@ -1,5 +1,6 @@
-import requests
 import json
+
+import requests
 
 
 class ForeCast:
@@ -28,5 +29,5 @@ class ForeCast:
     def get_forecast_json(code: str):
         r = ForeCast.get(code)
         if r.status_code == 200:
-            return True, json.loads(r.text)
+            return True, json.loads(r.text)["data"]
         return False

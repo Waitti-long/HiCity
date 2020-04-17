@@ -1,7 +1,7 @@
 class Progressbar:
     """
     简易进度条
-    @param printer 实现meta-printer中的接口
+    @param printer: 实现meta-printer中的接口
     """
 
     def __init__(self, printer):
