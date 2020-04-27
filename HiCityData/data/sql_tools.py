@@ -1,6 +1,7 @@
-from .entity import Base, City
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+from .entity import Base, City
 
 
 class SQL:
@@ -59,7 +60,7 @@ class SQL:
         改
         """
         sen = self.session()
-        old_city = sen.query.filter(City.code == a_city.code).filter(City.name == a_city.name).query()
+        old_city = sen.query().filter(City.code == a_city.code).filter(City.name == a_city.name)
         old_city.name = new_city.name
         old_city.code = new_city.code
         sen.commit()
