@@ -1,7 +1,5 @@
 # Hicity
 
-****
-
 ## 包结构
 
 * HicityData 数据处理包
@@ -24,10 +22,16 @@ python main.py
 --console 开启GUI的同时打开客户端
 ```
 
-### 使用server.py开启服务端
+### 使用server-debug.py开启服务端
 
-```sh
-python server.py
+```shell script
+python server-debug.py
+```
+
+## 使用server-production.py开启服务端
+
+```shell script
+python server-production.py
 ```
 
 ### 服务端每日数据更新

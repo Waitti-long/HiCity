@@ -4,5 +4,4 @@ dist
 HiCity.egg-info
 *\__pycache__
 city.log
-city.db
 citycode.txt
