@@ -1,5 +1,5 @@
-from HiCityLocal import ArgsAnalyze, LoggerConfig, Extend, require_log, CityFinder, GUI
-from HiCityData import Parser, Writer, Reader
+from HiCityData import Parser, Reader
+from HiCityLocal import ArgsAnalyze, LoggerConfig, Extend, require_log, GUI
 
 
 def init():
@@ -39,4 +39,5 @@ if __name__ == '__main__':
         read_db(args.db)
     Extend.save_args_file_to_db(args, GUI.progressbar, GUI.printer, GUI.sql)
     Extend.export_excel(args, GUI.city_map)
+    Extend.with_console(args, GUI.city_map)
     GUI.tk_root.mainloop()

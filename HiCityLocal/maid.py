@@ -1,6 +1,11 @@
-import logging
 import argparse
+import logging
+from multiprocessing import Process
+
 import xlsxwriter
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
+
 from HiCityData import Reader, Parser, Writer
 
 log_levels = {"DEBUG": logging.DEBUG, "INFO": logging.INFO, "WARN": logging.WARN, "ERROR": logging.ERROR,
@@ -28,6 +33,7 @@ class ArgsAnalyze:
         parser.add_argument("--log_format", help="change the log format")
         parser.add_argument("--log_level", help="change the log level", choices=log_levels.keys())
         parser.add_argument("--log_file", help="change the log file")
+        parser.add_argument("--console", help="start with console and GUI", action="store_true")
         args_ = parser.parse_args()
         return args_
 
@@ -49,6 +55,18 @@ class LoggerConfig:
             filename="city.log" if args.log_file is None else args.log_file,
             filemode="a"
         )
+
+
+def Console(city_map: {}):
+    completer = WordCompleter(list(city_map.keys()), ignore_case=True, )
+    while True:
+        text = prompt(
+            "Input City: ", completer=completer, complete_while_typing=True
+        )
+        if text in city_map:
+            print(city_map[text])
+        else:
+            print("error name")
 
 
 class Extend:
@@ -79,12 +97,19 @@ class Extend:
             worksheet.write_column(0, 1, code_list)
             workbook.close()
 
+    @staticmethod
+    def with_console(args, city_map):
+        if args.console:
+            p = Process(target=Console, args=(city_map,))
+            p.start()
+
 
 def require_log(action):
     """
     自动打日志
     @param action: 行为，即当前在做什么
     """
+
     def wrapper(func):
         def inner_wrapper(*args, **kwargs):
             logger = logging.getLogger()
